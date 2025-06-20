@@ -1,14 +1,14 @@
 <template>
   <div class="wrapper">
-    <form action="">
+    <form @submit.prevent="handleLogin">
         <h1>Welcome!</h1>
         <h2>Sign in to your Account</h2>
         <div class="input-box">
-            <input type="text" placeholder="Username" required>
+            <input type="text" placeholder="Username" required v-model="username">
             <i class="bx bxs-user"></i>
         </div>
         <div class="input-box">
-            <input type="password" placeholder="Password" required>
+            <input type="password" placeholder="Password" required v-model="password">
             <i class="bx bxs-lock-alt"></i>
         </div>
         <div class="remember-forgot">
@@ -27,7 +27,43 @@
 
 <script>
 export default {
+    data() {
+        return {
+            username: '',
+            password: '',
+            error: ''
+        }
+    },
+    methods: {
+        async handleLogin() {
+            try {
+                const response = await fetch('http://localhost:8080/login', {
+                    method: "POST",
+                    mode: "cors",
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        username: this.username,
+                        password: this.password
+                    })
+                })
 
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json()
+                if (result.success) {
+                    console.log('Login successful')
+                } else {
+                    console.log('Wrong credentials')
+                    this.error = result.message
+                }
+            } catch (e) {
+                console.error('Fetch error:', e);
+                this.error = e.message || 'Server error';
+            }
+        }
+    }
 }
 </script>
 
