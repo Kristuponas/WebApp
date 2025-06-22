@@ -2,14 +2,15 @@ Project started in order to obtain web skills (eg. HTML, CSS, Vue.js, Javascript
 Goal is to create a Room Reservation website.
 
 In-progress:
-  - Sign up page (HRML, CSS, Vue.js)
+  - Sign In & Up page (HTML, CSS, Vue.js)
   - Server side API creation that processes login data (Lua)
 
 To-do:
-  - Dashboard
+  - Strong password validator
+  - Home page
   - (Still generating ideas...)
 
-Seting up project:
+Setting up project:
   - Install Vue
   - cd WebApp/frontend/frontend
   - npm run dev
