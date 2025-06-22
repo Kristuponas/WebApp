@@ -1,5 +1,4 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -28,10 +27,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-}
-
-.card {
-  padding: 2em;
+  font-family: "Alumni Sans SC", sans-serif;
 }
 
 #app {

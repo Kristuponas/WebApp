@@ -1,37 +1,44 @@
-<template>
+.<template>
   <div class="wrapper">
-    <form @submit.prevent="handleLogin">
-        <h1>Sign In</h1>
+    <form @submit.prevent="handleSignup">
+        <h1>Sign Up</h1>
         <div class="input-box">
             <input type="text" placeholder="Username" required v-model="username">
             <i class="bx bxs-user"></i>
         </div>
         <div class="input-box">
             <input
-                :type="showPassword ? 'text' : 'password'"
+                :type="show.password ? 'text' : 'password'"
                 placeholder="Password"
                 required
                 v-model="password"
             />
             <i
-                :class="showPassword ? 'bx bxs-show' : 'bx bxs-hide'"
-                @click="togglePassword"
-                style="cursor: pointer"
+                :class="show.password ? 'bx bxs-show' : 'bx bxs-hide'"
+                @click="toggle('password')"
             ></i>
         </div>
-
-        <div class="forgot">
-            <a href="#"><i>Forgot password?</i></a>
+        <div class="input-box">
+            <input
+                :type="show.rPassword ? 'text' : 'password'"
+                placeholder="Repeat Password"
+                required
+                v-model="rPassword"
+            />
+            <i
+                :class="show.rPassword ? 'bx bxs-show' : 'bx bxs-hide'"
+                @click="toggle('rPassword')"
+            ></i>
         </div>
 
         <div class="error-holder">
             <p v-if="error" style="color: #f44; font-size: 0.9em">*{{ error }}</p>
         </div>
 
-        <button type="submit" class="btn">Login</button>
+        <button type="submit" class="btn">Sign Up</button>
 
         <div class="register-link">
-            <p>Don't have an account? <a href="/signup"><i>Sign Up</i></a></p>
+            <p>Already have an Account? <a href="/login"><i>Sign In</i></a></p>
         </div>
     </form>
   </div>
@@ -43,45 +50,55 @@ export default {
         return {
             username: '',
             password: '',
+            rPassword: '',
             error: '',
-            showPassword: false
+            show: {
+                password: false,
+                rPassword: false
+            }
         }
     },
     methods: {
-        togglePassword() {
-            this.showPassword = !this.showPassword;
+        toggle(field) {
+            this.show[field] = !this.show[field];
         },
-        async handleLogin() {
-            try {
-                const response = await fetch('http://localhost:8080/login', {
-                    method: "POST",
-                    mode: "cors",
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        username: this.username,
-                        password: this.password
-                    })
-                })
 
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
+        async handleSignup() {
+            this.error = '';
 
-                const result = await response.json()
-                if (result.success) {
-                    this.error = '';
-                    console.log('Login successful')
-                } else {
-                    console.log('Wrong credentials')
-                    this.error = "Wrong credentials.";
-                }
-            } catch (e) {
-                console.error('Fetch error:', e);
-                this.error = "Wrong credentials.";
+            // Check if passwords match
+            if (this.password !== this.rPassword) {
+                this.error = "Both passwords must match";
+                return;
             }
+
+            try {
+                const response = await fetch("http://localhost:8080/signup", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    username: this.username,
+                    password: this.password
+                })
+            });
+
+            const result = await response.json();
+
+            if (!response.ok || !result.success) {
+                this.error = result.message || "Signup failed";
+            } else {
+                console.log("Signup success:", result.message);
+                this.$router.push("/login");
+            }
+
+            } catch (err) {
+                console.error(err);
+                this.error = "Server error. Please try again.";
+            }   
         }
-    }
+    } 
 }
+
 </script>
 
 <style scoped>
@@ -103,7 +120,7 @@ export default {
     font-family: "Alumni Sans SC", sans-serif;
     background-color: #3a3a3a;
     width: 380px;
-    height: 520px;
+    height: 540px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -115,7 +132,7 @@ export default {
     line-height: 1.1;
     padding: 0;
     margin: 0;
-    margin-top: 0.50em;
+    margin-top: 0.5em;
     margin-bottom: 1em;
     font-weight: 400;
     color: var(--text-color);
@@ -140,6 +157,7 @@ export default {
     box-sizing: border-box;
     outline: none;
 }
+
 .wrapper .input-box input:focus::placeholder {
     color: var(--input-color);
 }
@@ -165,7 +183,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.5em;
+    margin-bottom: 4em;
 }
 
 .wrapper .forgot label {
@@ -193,8 +211,8 @@ export default {
     font-weight: bold;
     font-family: inherit;
     cursor: pointer;
+    margin-top: 1em;
     transition: border-color 0.25s;
-    margin-top: 2em;
 }
 
 .wrapper .btn:hover {
@@ -217,13 +235,8 @@ export default {
     color: var(--anchor-color-active);
 }
 
-.wrapper .error-holder {
+.error-holder {
     padding: 0;
-    min-height: 25px;
-    margin: 0;
-}
-
-.wrapper .error-holder p {
-    margin: 0;
+    min-height: 50px;
 }
 </style>
