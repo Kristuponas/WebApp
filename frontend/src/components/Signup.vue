@@ -1,47 +1,56 @@
 .<template>
-  <div class="wrapper">
-    <form @submit.prevent="handleSignup">
-        <h1>Sign Up</h1>
-        <div class="input-box">
-            <input type="text" placeholder="Username" required v-model="username">
-            <i class="bx bxs-user"></i>
-        </div>
-        <div class="input-box">
-            <input
-                :type="show.password ? 'text' : 'password'"
-                placeholder="Password"
-                required
-                v-model="password"
-            />
-            <i
-                :class="show.password ? 'bx bxs-show' : 'bx bxs-hide'"
-                @click="toggle('password')"
-            ></i>
-        </div>
-        <div class="input-box">
-            <input
-                :type="show.rPassword ? 'text' : 'password'"
-                placeholder="Repeat Password"
-                required
-                v-model="rPassword"
-            />
-            <i
-                :class="show.rPassword ? 'bx bxs-show' : 'bx bxs-hide'"
-                @click="toggle('rPassword')"
-            ></i>
-        </div>
+    <div>
+        <header class="header-bar">
+            <nav class="nav-bar">
+                <div class="header-logo">
+                    <a href="/home">ReserveIt.com</a>
+                </div>
+            </nav>
+        </header>
+        <div class="wrapper">
+            <form @submit.prevent="handleSignup">
+                <h1>Sign Up</h1>
+                <div class="input-box">
+                    <input type="text" placeholder="Username" required v-model="username">
+                    <i class="bx bxs-user"></i>
+                </div>
+                <div class="input-box">
+                    <input
+                        :type="show.password ? 'text' : 'password'"
+                        placeholder="Password"
+                        required
+                        v-model="password"
+                    />
+                    <i
+                        :class="show.password ? 'bx bxs-show' : 'bx bxs-hide'"
+                        @click="toggle('password')"
+                    ></i>
+                </div>
+                <div class="input-box">
+                    <input
+                        :type="show.rPassword ? 'text' : 'password'"
+                        placeholder="Repeat Password"
+                        required
+                        v-model="rPassword"
+                    />
+                    <i
+                        :class="show.rPassword ? 'bx bxs-show' : 'bx bxs-hide'"
+                        @click="toggle('rPassword')"
+                    ></i>
+                </div>
 
-        <div class="error-holder">
-            <p v-if="error" style="color: #f44; font-size: 0.9em">*{{ error }}</p>
-        </div>
+                <div class="error-holder">
+                    <p v-if="error" style="color: #f44; font-size: 0.9em">*{{ error }}</p>
+                </div>
 
-        <button type="submit" class="btn">Sign Up</button>
+                <button type="submit" class="btn">Sign Up</button>
 
-        <div class="register-link">
-            <p>Already have an Account? <a href="/login"><i>Sign In</i></a></p>
+                <div class="register-link">
+                    <p>Already have an Account? <a href="/login"><i>Sign In</i></a></p>
+                </div>
+            </form>
         </div>
-    </form>
-  </div>
+    </div>
 </template>
 
 <script>
@@ -106,6 +115,25 @@ export default {
 :deep(h2), 
 :deep(input) {
   font-family: "Alumni Sans SC", sans-serif;
+}
+
+.header-bar {
+    width: 250px;
+    height: 50px;
+    background: transparent;
+}
+
+.nav-bar {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.header-logo a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 32px;
+    padding: 0;
 }
 
 .wrapper {

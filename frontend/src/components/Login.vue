@@ -1,40 +1,49 @@
 <template>
-  <div class="wrapper">
-    <form @submit.prevent="handleLogin">
-        <h1>Sign In</h1>
-        <div class="input-box">
-            <input type="text" placeholder="Username" required v-model="username">
-            <i class="bx bxs-user"></i>
-        </div>
-        <div class="input-box">
-            <input
-                :type="showPassword ? 'text' : 'password'"
-                placeholder="Password"
-                required
-                v-model="password"
-            />
-            <i
-                :class="showPassword ? 'bx bxs-show' : 'bx bxs-hide'"
-                @click="togglePassword"
-                style="cursor: pointer"
-            ></i>
-        </div>
+    <div>
+        <header class="header-bar">
+            <nav class="nav-bar">
+                <div class="header-logo">
+                    <a href="/home">ReserveIt.com</a>
+                </div>
+            </nav>
+        </header>
+        <div class="wrapper">
+            <form @submit.prevent="handleLogin">
+                <h1>Sign In</h1>
+                <div class="input-box">
+                    <input type="text" placeholder="Username" required v-model="username">
+                    <i class="bx bxs-user"></i>
+                </div>
+                <div class="input-box">
+                    <input
+                        :type="showPassword ? 'text' : 'password'"
+                        placeholder="Password"
+                        required
+                        v-model="password"
+                    />
+                    <i
+                        :class="showPassword ? 'bx bxs-show' : 'bx bxs-hide'"
+                        @click="togglePassword"
+                        style="cursor: pointer"
+                    ></i>
+                </div>
 
-        <div class="forgot">
-            <a href="#"><i>Forgot password?</i></a>
-        </div>
+                <div class="forgot">
+                    <a href="#"><i>Forgot password?</i></a>
+                </div>
 
-        <div class="error-holder">
-            <p v-if="error" style="color: #f44; font-size: 0.9em">*{{ error }}</p>
-        </div>
+                <div class="error-holder">
+                    <p v-if="error" style="color: #f44; font-size: 0.9em">*{{ error }}</p>
+                </div>
 
-        <button type="submit" class="btn">Login</button>
+                <button type="submit" class="btn">Login</button>
 
-        <div class="register-link">
-            <p>Don't have an account? <a href="/signup"><i>Sign Up</i></a></p>
+                <div class="register-link">
+                    <p>Don't have an account? <a href="/signup"><i>Sign Up</i></a></p>
+                </div>
+            </form>
         </div>
-    </form>
-  </div>
+    </div>
 </template>
 
 <script>
@@ -89,6 +98,25 @@ export default {
 :deep(h2), 
 :deep(input) {
   font-family: "Alumni Sans SC", sans-serif;
+}
+
+.header-bar {
+    width: 250px;
+    height: 50px;
+    background: transparent;
+}
+
+.nav-bar {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.header-logo a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 32px;
+    padding: 0;
 }
 
 .wrapper {
