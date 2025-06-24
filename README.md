@@ -16,7 +16,7 @@ Done:
 
 Setting up project:
   - Install Vue
-  - cd WebApp/frontend/frontend
+  - cd WebApp/frontend
   - npm run dev
 
   - Install Lua
