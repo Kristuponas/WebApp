@@ -1,5 +1,6 @@
 local socket = require("socket")
 local json = require("dkjson")
+local sessions = {}
 
 local USERS_FILE = "users.json"
 
@@ -65,7 +66,7 @@ local function send_json(client, obj, status)
     client:send("HTTP/1.1 " .. (status or "200 OK") .. "\r\n" ..
         "Access-Control-Allow-Origin: *\r\n" ..
         "Access-Control-Allow-Methods: POST, GET, OPTIONS\r\n" ..
-        "Access-Control-Allow-Headers: Content-Type\r\n" ..
+        "Access-Control-Allow-Headers: Content-Type, Authorization\r\n" ..
         "Content-Type: application/json\r\n" ..
         "Content-Length: " .. #body .. "\r\n\r\n" ..
         body)
@@ -107,12 +108,12 @@ while true do
             client:send("HTTP/1.1 204 No Content\r\n" ..
                 "Access-Control-Allow-Origin: *\r\n" ..
                 "Access-Control-Allow-Methods: POST, GET, OPTIONS\r\n" ..
-                "Access-Control-Allow-Headers: Content-Type\r\n" ..
+                "Access-Control-Allow-Headers: Content-Type, Authorization\r\n" ..
                 "Content-Length: 0\r\n\r\n")
             return
         end
 
-        if method == "POST" and path == "/login" then
+        if method == "POST" and path == "/signin" then
             local _, body = read_request(client)
             local data = json.decode(body)
             local users = load_users()
@@ -126,7 +127,10 @@ while true do
             end
 
             if found then
-                send_json(client, { success = true, message = "Login successful" })
+                local token = tostring(os.time()) .. tostring(math.random(1000, 9999))
+                sessions[token] = data.username
+
+                send_json(client, { success = true, message = "Login successful", token = token })
             else
                 send_json(client, { success = false, message = "Invalid credentials" }, "401 Unauthorized")
             end
@@ -149,6 +153,19 @@ while true do
             save_users(users)
 
             send_json(client, { success = true, message = "Signup successful" })
+            return
+        end
+
+        if method == "GET" and path == "/profile" then
+            local headers, _ = read_request(client)
+            local token = headers["authorization"]
+
+            if token and sessions[token] then
+                local username = sessions[token]
+                send_json(client, { success = true, message = username })
+            else
+                send_json(client, { success = false, message = "Unauthorized" }, "401 Unauthorized")
+            end
             return
         end
 

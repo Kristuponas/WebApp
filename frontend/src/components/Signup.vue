@@ -1,4 +1,4 @@
-.<template>
+<template>
     <div>
         <header class="header-bar">
             <nav class="nav-bar">
@@ -58,7 +58,7 @@
                 <button type="submit" class="btn">Sign Up</button>
 
                 <div class="register-link">
-                    <p>Already have an Account? <a href="/login"><i>Sign In</i></a></p>
+                    <p>Already have an Account? <a href="/signin"><i>Sign In</i></a></p>
                 </div>
             </form>
         </div>
@@ -119,7 +119,7 @@ export default {
                 this.error = result.message || "Signup failed";
             } else {
                 console.log("Signup success:", result.message);
-                this.$router.push("/login");
+                this.$router.push("/signin");
             }
 
             } catch (err) {
@@ -177,7 +177,6 @@ export default {
     --anchor-color-active: #424fdb;
     --valid-pass: #45cb85;
     --invalid-pass: #a3333d;
-    /*f64740*/
 
     font-family: "Alumni Sans SC", sans-serif;
     background-color: #3a3a3a;

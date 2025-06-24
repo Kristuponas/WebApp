@@ -6,39 +6,55 @@
                     <a href="/home">ReserveIt.com</a>
                 </div>
                 <div class="header-buttons">
-                    <template v-if="isLoggedIn">
-                        <div class="header-button-group">
-                            <a href="/profile">Profile</a>
-                        </div>
-                        <div class="header-button-group" @click="logout" style="cursor: pointer;">
-                            <a href="#" @click.prevent="logout">Log Out</a>
-                        </div> 
-                    </template>
-                   <template v-else>
-                        <div class="header-button-group">
-                            <a href="/signup">Sign Up</a>
-                        </div>
-                        <div class="header-button-group">
-                            <a href="/signin">Sign In</a>
-                        </div> 
-                   </template>
+                    <div class="header-button-group">
+                        <a href="/profile">Profile</a>
+                    </div>
+                    <div class="header-button-group" @click="logout" style="cursor: pointer;">
+                        <a href="#" @click.prevent="logout">Log Out</a>
+                    </div> 
                 </div>
             </nav>
         </header>
-        
+        <div class="wrapper">
+            <h1>Welcome, {{ username }}!</h1>
+            <p>asd</p>
+        </div>
   </div>
-  
+    
 </template>
 
 <script>
 export default {
     data() {
         return {
-            isLoggedIn: false
+            username: ''
         }
     },
-    mounted() {
-        this.isLoggedIn = !!localStorage.getItem("token")
+    async mounted() {
+        const token = localStorage.getItem("token")
+        if (!token) {
+            this.$router.push("/signin")
+            return
+        }
+
+        try {
+            const response = await fetch("http://localhost:8080/profile", {
+                method: "GET",
+                headers: {
+                    "Authorization": token
+                }
+            })
+
+            const result = await response.json()
+            if (result.success) {
+                this.username = result.message
+            } else {
+                this.$router.push("/signin")
+            }
+        } catch (err) {
+            console.error("Error fetching profile: ", err)
+            this.$router.push("/signin")
+        }
     },
     methods: {
         logout() {
@@ -130,4 +146,9 @@ export default {
     color: var(--text-color);
 }
 
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 </style>

@@ -33,10 +33,10 @@
                 </div>
 
                 <div class="error-holder">
-                    <p v-if="error" style="color: #f44; font-size: 0.9em">*{{ error }}</p>
+                    <p v-if="error" style="color: var(--invalid-pass); font-size: 0.9em">*{{ error }}</p>
                 </div>
 
-                <button type="submit" class="btn">Login</button>
+                <button type="submit" class="btn">Sign In</button>
 
                 <div class="register-link">
                     <p>Don't have an account? <a href="/signup"><i>Sign Up</i></a></p>
@@ -62,7 +62,7 @@ export default {
         },
         async handleLogin() {
             try {
-                const response = await fetch('http://localhost:8080/login', {
+                const response = await fetch('http://localhost:8080/signin', {
                     method: "POST",
                     mode: "cors",
                     headers: { 'Content-Type': 'application/json' },
@@ -80,6 +80,7 @@ export default {
                 if (result.success) {
                     this.error = '';
                     console.log('Login successful')
+                    localStorage.setItem("token", result.token)
                     this.$router.push('/home');
                 } else {
                     console.log('Wrong credentials')
@@ -128,6 +129,7 @@ export default {
     --box-color-active: #767474;
     --anchor-color: #616bdd;
     --anchor-color-active: #424fdb;
+    --invalid-pass: #a3333d;
 
     font-family: "Alumni Sans SC", sans-serif;
     background-color: #3a3a3a;
