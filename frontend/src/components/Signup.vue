@@ -15,6 +15,10 @@
                     <i class="bx bxs-user"></i>
                 </div>
                 <div class="input-box">
+                    <input type="email" placeholder="Email" required v-model="email">
+                    <i class="bx bxs-envelope"></i>
+                </div>
+                <div class="input-box">
                     <input
                         :type="show.password ? 'text' : 'password'"
                         placeholder="Password"
@@ -70,6 +74,7 @@ export default {
     data() {
         return {
             username: '',
+            email: '',
             password: '',
             rPassword: '',
             error: '',
@@ -109,6 +114,7 @@ export default {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     username: this.username,
+                    email: this.email,
                     password: this.password
                 })
             });
@@ -181,7 +187,7 @@ export default {
     font-family: "Alumni Sans SC", sans-serif;
     background-color: #3a3a3a;
     width: 380px;
-    height: 700px;
+    height: 750px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -223,7 +229,8 @@ export default {
     color: var(--input-color);
 }
 
-.wrapper .input-box:first-of-type i {
+.wrapper .input-box:nth-of-type(1) i,
+.wrapper .input-box:nth-of-type(2) i {
   cursor: default;
   pointer-events: none;
 }

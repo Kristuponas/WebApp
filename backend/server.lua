@@ -147,9 +147,13 @@ while true do
                     send_json(client, { success = false, message = "User already exists" }, "400 Bad Request")
                     return
                 end
+                if user.email == data.email then
+                    send_json(client, { success = false, message = "Email already in use" }, "400 Bad Request")
+                    return
+                end
             end
 
-            table.insert(users, { username = data.username, password = data.password })
+            table.insert(users, { username = data.username, email = data.email, password = data.password, })
             save_users(users)
 
             send_json(client, { success = true, message = "Signup successful" })

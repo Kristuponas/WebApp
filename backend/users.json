@@ -1,4 +1,5 @@
 [{
     "username":"admin",
-    "password":"1234"
+    "password":"Admin123!",
+    "email":"admin@mail.com"
   }]

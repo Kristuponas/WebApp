@@ -17,7 +17,6 @@
         </header>
         <div class="wrapper">
             <h1>Welcome, {{ username }}!</h1>
-            <p>asd</p>
         </div>
   </div>
     
