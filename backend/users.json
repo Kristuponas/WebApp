@@ -4,4 +4,10 @@
   },{
     "username":"test",
     "password":"123"
+  },{
+    "username":"testing",
+    "password":"asd"
+  },{
+    "username":"test2",
+    "password":"Testing0!"
   }]

@@ -80,6 +80,7 @@ export default {
                 if (result.success) {
                     this.error = '';
                     console.log('Login successful')
+                    this.$router.push('/home');
                 } else {
                     console.log('Wrong credentials')
                     this.error = "Wrong credentials.";

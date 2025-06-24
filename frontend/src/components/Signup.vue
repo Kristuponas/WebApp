@@ -26,10 +26,22 @@
                         @click="toggle('password')"
                     ></i>
                 </div>
+
+                <div class="password-criteria">
+                    <p>Password must contain:</p>
+                    <ul>
+                        <li :class="isMinLength ? 'valid-password' : 'invalid-password'">At least 8 characters</li>
+                        <li :class="hasUppercase ? 'valid-password' : 'invalid-password'">At least 1 uppercase character (A-Z)</li>
+                        <li :class="hasLowercase ? 'valid-password' : 'invalid-password'">At least 1 lowercase character (a-z)</li>
+                        <li :class="hasDigit ? 'valid-password' : 'invalid-password'">At least 1 numeric digit (0-9)</li>
+                        <li :class="hasSpecial ? 'valid-password' : 'invalid-password'">At least 1 special character (e.g., !@#$%^&*()).</li>
+                    </ul>
+                </div>
+
                 <div class="input-box">
                     <input
                         :type="show.rPassword ? 'text' : 'password'"
-                        placeholder="Repeat Password"
+                        placeholder="Confirm Password"
                         required
                         v-model="rPassword"
                     />
@@ -40,7 +52,7 @@
                 </div>
 
                 <div class="error-holder">
-                    <p v-if="error" style="color: #f44; font-size: 0.9em">*{{ error }}</p>
+                    <p v-if="error" style="color: var(--invalid-pass); font-size: 0.9em">*{{ error }}</p>
                 </div>
 
                 <button type="submit" class="btn">Sign Up</button>
@@ -64,7 +76,12 @@ export default {
             show: {
                 password: false,
                 rPassword: false
-            }
+            },
+            isMinLength: false,
+            hasUppercase: false,
+            hasLowercase: false,
+            hasDigit: false,
+            hasSpecial: false
         }
     },
     methods: {
@@ -78,6 +95,11 @@ export default {
             // Check if passwords match
             if (this.password !== this.rPassword) {
                 this.error = "Both passwords must match";
+                return;
+            }
+
+            if(!this.isMinLength || !this.hasUppercase || !this.hasLowercase || !this.hasDigit || !this.hasSpecial) {
+                this.error = "Password does not match criteria."
                 return;
             }
 
@@ -105,7 +127,16 @@ export default {
                 this.error = "Server error. Please try again.";
             }   
         }
-    } 
+    }, 
+    watch: {
+        password(value) {
+            this.isMinLength = value.length >= 8;
+            this.hasUppercase = /[A-Z]/.test(value);
+            this.hasLowercase = /[a-z]/.test(value);
+            this.hasDigit = /\d/.test(value);
+            this.hasSpecial = /[!@#$%^&*(),.?'"{}|<>:;\[\]\\\\-_=+]/.test(value);
+        }
+    }
 }
 
 </script>
@@ -144,11 +175,14 @@ export default {
     --box-color-active: #767474;
     --anchor-color: #616bdd;
     --anchor-color-active: #424fdb;
+    --valid-pass: #45cb85;
+    --invalid-pass: #a3333d;
+    /*f64740*/
 
     font-family: "Alumni Sans SC", sans-serif;
     background-color: #3a3a3a;
     width: 380px;
-    height: 540px;
+    height: 700px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -234,7 +268,7 @@ export default {
     background-color: var(--box-color);
     border-radius: 8px;
     border: 1px solid transparent;
-    padding: 0.4em 0.8em 0.4em 0.8em;
+    padding: 0.3em 0.8em 0.4em 0.8em;
     font-size: 1em;
     font-weight: bold;
     font-family: inherit;
@@ -267,4 +301,31 @@ export default {
     padding: 0;
     min-height: 50px;
 }
+
+.password-criteria {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    margin: 2em 0 2em 0;
+}
+.password-criteria p,
+.password-criteria ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 2em;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.valid-password {
+    color: var(--valid-pass);
+}
+
+.invalid-password {
+    color: var(--invalid-pass);
+}
+
 </style>
