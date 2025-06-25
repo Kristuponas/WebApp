@@ -1,14 +1,10 @@
 <template>
-    <div>
+    <div class="auth-container">
         <header class="header-bar">
-            <nav class="nav-bar">
-                <div class="header-logo">
-                    <a href="/home">ReserveIt.com</a>
-                </div>
-            </nav>
+            <a href="/home">ReserveIt.com</a>
         </header>
         <div class="wrapper">
-            <form @submit.prevent="handleLogin">
+            <form @submit.prevent="handleLogin" class="form-box">
                 <h1>Sign In</h1>
                 <div class="input-box">
                     <input type="text" placeholder="Username" required v-model="username">
@@ -102,19 +98,31 @@ export default {
   font-family: "Alumni Sans SC", sans-serif;
 }
 
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
 .header-bar {
-    width: 250px;
-    height: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 8vh;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     background: transparent;
 }
 
-.nav-bar {
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
-
-.header-logo a {
+.header-bar a {
     text-decoration: none;
     color: var(--text-color);
     font-size: 32px;
@@ -130,26 +138,43 @@ export default {
     --anchor-color: #616bdd;
     --anchor-color-active: #424fdb;
     --invalid-pass: #a3333d;
+    background-color: #3a3a3a;
 
     font-family: "Alumni Sans SC", sans-serif;
-    background-color: #3a3a3a;
-    width: 380px;
-    height: 520px;
+    
+    box-sizing: border-box;
+
+    width: 80%;
+    max-width: 600px;
+
+    height: 70%;
+    max-height: 750px;
+
+    margin-top: 4vh;
+    
+    flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+
     border-radius: 16px;
 }
 
+.form-box {
+    width: 80%;
+}
+
 .wrapper h1 {
-    font-size: 42px;
-    line-height: 1.1;
-    padding: 0;
-    margin: 0;
-    margin-top: 0.50em;
-    margin-bottom: 1em;
+    font-size: 5rem;
     font-weight: 400;
+    line-height: 1.1;
     color: var(--text-color);
+    
+    padding: 0;
+
+    margin: 0;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
 }
 
 .wrapper .input-box {
@@ -159,33 +184,39 @@ export default {
 }
 
 .wrapper .input-box input {
+    font-size: 1em;
+    color: var(--input-color);
+
+    box-sizing: border-box;
     width: 100%;
     height: 2.5em;
+
     padding-left: 1em;
     padding-right: 2.5em;
-    border-radius: 6px;
-    border: none;
+    
     background-color: var(--box-color);
-    color: var(--input-color);
-    font-size: 1em;
-    box-sizing: border-box;
+    
     outline: none;
+    border: none;
+    border-radius: 6px;
 }
 .wrapper .input-box input:focus::placeholder {
     color: var(--input-color);
 }
 
 .wrapper .input-box:first-of-type i {
-  cursor: default;
-  pointer-events: none;
+    cursor: default;
+    pointer-events: none;
 }
 
 .wrapper .input-box i {
+    color: var(--input-color);
+
     position: absolute;
     right: 1em;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--input-color);
+    
     cursor: pointer;
 }
 .wrapper .input-box input::placeholder {
@@ -196,14 +227,6 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.5em;
-}
-
-.wrapper .forgot label {
-    display: flex;
-    align-items: center;
-    gap: 0.4em;
-    color: var(--input-color);
 }
 
 .wrapper .forgot a {
@@ -215,17 +238,20 @@ export default {
 }
 
 .wrapper .btn {
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: inherit;
     color: var(--text-color);
+
     background-color: var(--box-color);
+
     border-radius: 8px;
     border: 1px solid transparent;
+
     padding: 0.4em 0.8em 0.4em 0.8em;
-    font-size: 1em;
-    font-weight: bold;
-    font-family: inherit;
+    margin-top: 2em;    
+    
     cursor: pointer;
-    transition: border-color 0.25s;
-    margin-top: 2em;
 }
 
 .wrapper .btn:hover {
@@ -257,4 +283,39 @@ export default {
 .wrapper .error-holder p {
     margin: 0;
 }
+
+@media (max-width: 600px){
+    .wrapper {
+        height: 70%;
+        max-height: 600px;
+    }
+    .wrapper h1 {
+        font-size: 2.5rem;
+        font-weight: 400;
+        line-height: 1.1;
+        color: var(--text-color);
+    
+        padding: 0;
+
+        margin: 0;
+        margin-top: 0.5em;
+        margin-bottom: 1em;
+    }
+    .password-criteria p,
+    .password-criteria ul {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-height: 700px) {
+    .wrapper {
+        height: 70%;
+        max-height: 590px;
+    }
+    .error-holder {
+        padding: 0;
+        min-height: 40px;
+    }
+}
+
 </style>

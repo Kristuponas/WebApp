@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="auth-container">
         <header class="header-bar">
             <nav class="nav-bar">
                 <div class="header-logo">

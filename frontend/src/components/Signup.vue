@@ -1,11 +1,7 @@
 <template>
-    <div>
+    <div class="auth-container">
         <header class="header-bar">
-            <nav class="nav-bar">
-                <div class="header-logo">
-                    <a href="/home">ReserveIt.com</a>
-                </div>
-            </nav>
+            <a href="/home">ReserveIt.com</a>
         </header>
         <div class="wrapper">
             <form @submit.prevent="handleSignup">
@@ -61,7 +57,7 @@
 
                 <button type="submit" class="btn">Sign Up</button>
 
-                <div class="register-link">
+                <div class="redirect-link">
                     <p>Already have an Account? <a href="/signin"><i>Sign In</i></a></p>
                 </div>
             </form>
@@ -151,22 +147,34 @@ export default {
 :deep(h1), 
 :deep(h2), 
 :deep(input) {
-  font-family: "Alumni Sans SC", sans-serif;
+    font-family: "Alumni Sans SC", sans-serif;
+}
+
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
 }
 
 .header-bar {
-    width: 250px;
-    height: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 8vh;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     background: transparent;
 }
 
-.nav-bar {
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
-
-.header-logo a {
+.header-bar a {
     text-decoration: none;
     color: var(--text-color);
     font-size: 32px;
@@ -181,28 +189,43 @@ export default {
     --box-color-active: #767474;
     --anchor-color: #616bdd;
     --anchor-color-active: #424fdb;
-    --valid-pass: #45cb85;
     --invalid-pass: #a3333d;
+    --valid-pass: #45cb85;
+
+    background-color: #3a3a3a;
 
     font-family: "Alumni Sans SC", sans-serif;
-    background-color: #3a3a3a;
-    width: 380px;
-    height: 750px;
+    
+    box-sizing: border-box;
+
+    width: 80%;
+    max-width: 380px;
+    min-width: 270px;
+
+    height: 70%;
+    max-height: 710px;
+
+    margin-top: 4vh;
+    
+    flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+
     border-radius: 16px;
 }
 
 .wrapper h1 {
-    font-size: 42px;
+    font-size: 2.5rem;
+    font-weight: 400;
     line-height: 1.1;
+    color: var(--text-color);
+    
     padding: 0;
+
     margin: 0;
     margin-top: 0.5em;
     margin-bottom: 1em;
-    font-weight: 400;
-    color: var(--text-color);
 }
 
 .wrapper .input-box {
@@ -247,28 +270,6 @@ export default {
     color: var(--placeholder-text);
 }
 
-.wrapper .forgot {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 4em;
-}
-
-.wrapper .forgot label {
-    display: flex;
-    align-items: center;
-    gap: 0.4em;
-    color: var(--input-color);
-}
-
-.wrapper .forgot a {
-    color: var(--anchor-color);
-}
-
-.wrapper .forgot a:hover {
-    color: var(--anchor-color-active);
-}
-
 .wrapper .btn {
     color: var(--text-color);
     background-color: var(--box-color);
@@ -279,7 +280,6 @@ export default {
     font-weight: bold;
     font-family: inherit;
     cursor: pointer;
-    margin-top: 1em;
     transition: border-color 0.25s;
 }
 
@@ -291,15 +291,15 @@ export default {
     background-color: var(--box-color-active);
 }
 
-.wrapper .register-link {
+.wrapper .redirect-link {
     margin-top: 1em;
 }
 
-.wrapper .register-link a {
+.wrapper .redirect-link a {
     color: var(--anchor-color);
 }
 
-.wrapper .register-link a:hover {
+.wrapper .redirect-link a:hover {
     color: var(--anchor-color-active);
 }
 
@@ -314,7 +314,8 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     padding: 0;
-    margin: 2em 0 2em 0;
+    margin: 1rem 0 1rem 0;
+    font-size: 1rem;
 }
 .password-criteria p,
 .password-criteria ul {
@@ -334,4 +335,25 @@ export default {
     color: var(--invalid-pass);
 }
 
+@media (max-width: 600px){
+    .wrapper {
+        height: 70%;
+        max-height: 600px;
+    }
+    .password-criteria p,
+    .password-criteria ul {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-height: 700px) {
+    .wrapper {
+        height: 70%;
+        max-height: 590px;
+    }
+    .error-holder {
+        padding: 0;
+        min-height: 40px;
+    }
+}
 </style>
