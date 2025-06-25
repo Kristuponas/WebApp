@@ -8,7 +8,6 @@ In-progress:
 
 To-do:
   - Changing password (if forgot pasword)
-  - Update account creation (add email)
 
 Done:
   - Sign In/Up pages
