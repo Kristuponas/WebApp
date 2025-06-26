@@ -125,7 +125,7 @@ export default {
 .header-bar a {
     text-decoration: none;
     color: var(--text-color);
-    font-size: 32px;
+    font-size: 3rem;
     padding: 0;
 }
 
@@ -150,7 +150,7 @@ export default {
     height: 70%;
     max-height: 750px;
 
-    margin-top: 4vh;
+    margin-top: 6vh;
     
     flex-grow: 1;
     display: flex;
@@ -184,12 +184,12 @@ export default {
 }
 
 .wrapper .input-box input {
-    font-size: 1em;
+    font-size: 1.5rem;
     color: var(--input-color);
 
     box-sizing: border-box;
     width: 100%;
-    height: 2.5em;
+    height: 4rem;
 
     padding-left: 1em;
     padding-right: 2.5em;
@@ -216,9 +216,11 @@ export default {
     right: 1em;
     top: 50%;
     transform: translateY(-50%);
+    font-size: 1.5rem;
     
     cursor: pointer;
 }
+
 .wrapper .input-box input::placeholder {
     color: var(--placeholder-text);
 }
@@ -231,6 +233,7 @@ export default {
 
 .wrapper .forgot a {
     color: var(--anchor-color);
+    font-size: 1.5rem;
 }
 
 .wrapper .forgot a:hover {
@@ -238,7 +241,7 @@ export default {
 }
 
 .wrapper .btn {
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 500;
     font-family: inherit;
     color: var(--text-color);
@@ -264,6 +267,7 @@ export default {
 
 .wrapper .register-link {
     margin-top: 1em;
+    font-size: 1.5rem;
 }
 
 .wrapper .register-link a {
@@ -286,34 +290,28 @@ export default {
 
 @media (max-width: 600px){
     .wrapper {
-        height: 70%;
         max-height: 600px;
     }
     .wrapper h1 {
         font-size: 2.5rem;
-        font-weight: 400;
-        line-height: 1.1;
-        color: var(--text-color);
-    
-        padding: 0;
-
-        margin: 0;
-        margin-top: 0.5em;
-        margin-bottom: 1em;
     }
-    .password-criteria p,
-    .password-criteria ul {
-        font-size: 0.8rem;
+    .wrapper .input-box input {
+        font-size: 1rem;
+        height: 2.5em;
+    }
+    .wrapper .input-box i,
+    .wrapper .forgot a,
+    .wrapper .btn,
+    .wrapper .register-link {
+        font-size: 1rem;
     }
 }
 
 @media (max-height: 700px) {
     .wrapper {
-        height: 70%;
         max-height: 590px;
     }
     .error-holder {
-        padding: 0;
         min-height: 40px;
     }
 }

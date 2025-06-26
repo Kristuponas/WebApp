@@ -4,7 +4,7 @@
             <a href="/home">ReserveIt.com</a>
         </header>
         <div class="wrapper">
-            <form @submit.prevent="handleSignup">
+            <form @submit.prevent="handleSignup" class="form-box">
                 <h1>Sign Up</h1>
                 <div class="input-box">
                     <input type="text" placeholder="Username" required v-model="username">
@@ -177,7 +177,7 @@ export default {
 .header-bar a {
     text-decoration: none;
     color: var(--text-color);
-    font-size: 32px;
+    font-size: 3rem;
     padding: 0;
 }
 
@@ -199,13 +199,12 @@ export default {
     box-sizing: border-box;
 
     width: 80%;
-    max-width: 380px;
-    min-width: 270px;
+    max-width: 600px;
 
     height: 70%;
-    max-height: 710px;
+    max-height: 800px;
 
-    margin-top: 4vh;
+    margin-top: 6vh;
     
     flex-grow: 1;
     display: flex;
@@ -215,17 +214,19 @@ export default {
     border-radius: 16px;
 }
 
+.form-box {
+    width: 80%;
+}
+
 .wrapper h1 {
-    font-size: 2.5rem;
+    font-size: 4.5rem;
     font-weight: 400;
     line-height: 1.1;
     color: var(--text-color);
     
     padding: 0;
 
-    margin: 0;
-    margin-top: 0.5em;
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
 }
 
 .wrapper .input-box {
@@ -235,17 +236,21 @@ export default {
 }
 
 .wrapper .input-box input {
+    font-size: 1.5rem;
+    color: var(--input-color);
+
+    box-sizing: border-box;
     width: 100%;
-    height: 2.5em;
+    height: 3.5rem;
+
     padding-left: 1em;
     padding-right: 2.5em;
-    border-radius: 6px;
-    border: none;
+    
     background-color: var(--box-color);
-    color: var(--input-color);
-    font-size: 1em;
-    box-sizing: border-box;
+    
     outline: none;
+    border: none;
+    border-radius: 6px;
 }
 
 .wrapper .input-box input:focus::placeholder {
@@ -254,33 +259,40 @@ export default {
 
 .wrapper .input-box:nth-of-type(1) i,
 .wrapper .input-box:nth-of-type(2) i {
-  cursor: default;
-  pointer-events: none;
+    cursor: default;
+    pointer-events: none;
 }
 
 .wrapper .input-box i {
+    color: var(--input-color);
+
     position: absolute;
     right: 1em;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--input-color);
+    font-size: 1.5rem;
+    
     cursor: pointer;
 }
+
 .wrapper .input-box input::placeholder {
     color: var(--placeholder-text);
 }
 
 .wrapper .btn {
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-family: inherit;
     color: var(--text-color);
+
     background-color: var(--box-color);
+
     border-radius: 8px;
     border: 1px solid transparent;
-    padding: 0.3em 0.8em 0.4em 0.8em;
-    font-size: 1em;
-    font-weight: bold;
-    font-family: inherit;
+
+    padding: 0.4em 0.8em 0.4em 0.8em; 
+    
     cursor: pointer;
-    transition: border-color 0.25s;
 }
 
 .wrapper .btn:hover {
@@ -293,6 +305,7 @@ export default {
 
 .wrapper .redirect-link {
     margin-top: 1em;
+    font-size: 1.5rem;
 }
 
 .wrapper .redirect-link a {
@@ -306,6 +319,7 @@ export default {
 .error-holder {
     padding: 0;
     min-height: 50px;
+    font-size: 1.5rem;
 }
 
 .password-criteria {
@@ -323,6 +337,7 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     padding-left: 2em;
+    font-size: 1.2rem;
     margin: 0;
     color: var(--text-color);
 }
@@ -337,8 +352,24 @@ export default {
 
 @media (max-width: 600px){
     .wrapper {
-        height: 70%;
         max-height: 600px;
+    }
+    .wrapper h1 {
+        font-size: 2.5rem;
+    }
+    .wrapper .input-box input {
+        font-size: 1rem;
+        height: 2.5em;
+    }
+    .wrapper .input-box i,
+    .wrapper .forgot a,
+    .wrapper .btn,
+    .wrapper .redirect-link,
+    .wrapper .error-holder {
+        font-size: 1rem;
+    }
+    .header-bar a {
+        font-size: 2rem;
     }
     .password-criteria p,
     .password-criteria ul {
@@ -348,11 +379,9 @@ export default {
 
 @media (max-height: 700px) {
     .wrapper {
-        height: 70%;
         max-height: 590px;
     }
     .error-holder {
-        padding: 0;
         min-height: 40px;
     }
 }
