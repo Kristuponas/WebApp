@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="error-holder">
-                    <p v-if="error" style="color: var(--invalid-pass); font-size: 0.9em">*{{ error }}</p>
+                    <p v-if="error" style="color: var(--invalid-pass)">*{{ error }}</p>
                 </div>
 
                 <button type="submit" class="btn">Sign In</button>
@@ -95,15 +95,19 @@ export default {
 :deep(h1), 
 :deep(h2), 
 :deep(input) {
-  font-family: "Alumni Sans SC", sans-serif;
+    font-family: "Alumni Sans SC", sans-serif;
 }
 
 .auth-container {
-    min-height: 100vh;
+    height: 85vh;
+    padding-top: 10vh;
+    padding-bottom: 5vh;
+
     display: flex;
     justify-content: center;
-    flex-direction: column;
     align-items: center;
+
+    flex-direction: column;
     position: relative;
 }
 
@@ -113,7 +117,7 @@ export default {
     left: 0;
 
     width: 100%;
-    height: 8vh;
+    height: 10vh;
     
     display: flex;
     justify-content: center;
@@ -140,41 +144,33 @@ export default {
     --invalid-pass: #a3333d;
     background-color: #3a3a3a;
 
-    font-family: "Alumni Sans SC", sans-serif;
-    
     box-sizing: border-box;
 
-    width: 80%;
-    max-width: 600px;
-
-    height: 70%;
-    max-height: 750px;
-
-    margin-top: 6vh;
+    width: 80vw;
+    height: 70vh;
     
-    flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: center;
 
     border-radius: 16px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .form-box {
-    width: 80%;
+    width: 70%;
 }
 
 .wrapper h1 {
-    font-size: 5rem;
+    font-size: 4rem;
     font-weight: 400;
     line-height: 1.1;
     color: var(--text-color);
     
     padding: 0;
 
-    margin: 0;
-    margin-top: 0.5em;
-    margin-bottom: 1em;
+    margin-top: 3rem;
+    margin-bottom: 2.5rem;
 }
 
 .wrapper .input-box {
@@ -184,12 +180,12 @@ export default {
 }
 
 .wrapper .input-box input {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: var(--input-color);
 
     box-sizing: border-box;
     width: 100%;
-    height: 4rem;
+    height: 3rem;
 
     padding-left: 1em;
     padding-right: 2.5em;
@@ -200,6 +196,13 @@ export default {
     border: none;
     border-radius: 6px;
 }
+
+.wrapper .input-box input:focus {
+    box-shadow: inset 1px 1px 6px rgba(0, 0, 0, 0.2),
+                inset -1px -1px 6px rgba(255, 255, 255, 0.02);
+    transition: box-shadow 0.3s ease;
+}
+
 .wrapper .input-box input:focus::placeholder {
     color: var(--input-color);
 }
@@ -216,7 +219,7 @@ export default {
     right: 1em;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     
     cursor: pointer;
 }
@@ -229,11 +232,12 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 1rem;
 }
 
 .wrapper .forgot a {
     color: var(--anchor-color);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .wrapper .forgot a:hover {
@@ -241,8 +245,8 @@ export default {
 }
 
 .wrapper .btn {
-    font-size: 1.5rem;
-    font-weight: 500;
+    font-size: 1.2rem;
+    font-weight: 400;
     font-family: inherit;
     color: var(--text-color);
 
@@ -252,7 +256,7 @@ export default {
     border: 1px solid transparent;
 
     padding: 0.4em 0.8em 0.4em 0.8em;
-    margin-top: 2em;    
+    margin-top: 1.2rem;    
     
     cursor: pointer;
 }
@@ -267,7 +271,7 @@ export default {
 
 .wrapper .register-link {
     margin-top: 1em;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .wrapper .register-link a {
@@ -280,39 +284,213 @@ export default {
 
 .wrapper .error-holder {
     padding: 0;
-    min-height: 25px;
     margin: 0;
+
+    height: 2rem;
 }
 
 .wrapper .error-holder p {
-    margin: 0;
+    font-size: 1.1rem;
 }
 
-@media (max-width: 600px){
-    .wrapper {
-        max-height: 600px;
+/* MOBILE VERSION (LARGER) */
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+    .header-bar a {
+        font-size: 3.5rem;
     }
+
+    .form-box {
+        width: 80%;
+    }
+
+    .wrapper {
+        width: 80vw;
+        height: 75vh;
+    }
+
     .wrapper h1 {
-        font-size: 2.5rem;
+        font-size: 4.5rem;
     }
+
     .wrapper .input-box input {
-        font-size: 1rem;
-        height: 2.5em;
+        font-size: 1.5rem;
+
+        height: 4rem;
     }
-    .wrapper .input-box i,
-    .wrapper .forgot a,
-    .wrapper .btn,
+
+    .wrapper .input-box i {
+        font-size: 1.5rem;
+    }
+
+    .wrapper .forgot a {
+        font-size: 1.5rem;
+    }
+
+    .wrapper .btn {
+        margin-top: 1.5rem;
+        font-size: 1.5rem;
+    }
+
     .wrapper .register-link {
-        font-size: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .wrapper .error-holder {
+        height: 2.5rem;
+    }
+
+    .wrapper .error-holder p {
+        font-size: 1.3rem;
     }
 }
 
-@media (max-height: 700px) {
-    .wrapper {
-        max-height: 590px;
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    .header-bar a {
+        font-size: 3.7rem;
     }
-    .error-holder {
-        min-height: 40px;
+
+    .form-box {
+        width: 80%;
+    }
+
+    .wrapper {
+        width: 80vw;
+        height: 75vh;
+    }
+
+    .wrapper h1 {
+        font-size: 4.7rem;
+    }
+
+    .wrapper .input-box input {
+        font-size: 1.7rem;
+
+        height: 4.2rem;
+    }
+
+    .wrapper .input-box i {
+        font-size: 1.7rem;
+    }
+
+    .wrapper .forgot a {
+        font-size: 1.7rem;
+    }
+
+    .wrapper .btn {
+        margin-top: 1.7rem;
+        font-size: 1.7rem;
+    }
+
+    .wrapper .register-link {
+        font-size: 1.7rem;
+    }
+
+    .wrapper .error-holder {
+        height: 2.7rem;
+    }
+
+    .wrapper .error-holder p {
+        font-size: 1.5rem;
+    }
+}
+
+@media  only screen and (min-width: 992px) and (max-width: 1199px){
+    .header-bar a {
+        font-size: 4rem;
+    }
+
+    .form-box {
+        width: 80%;
+    }
+
+    .wrapper {
+        width: 70vw;
+        height: 70vh;
+    }
+
+    .wrapper h1 {
+        font-size: 5rem;
+    }
+
+    .wrapper .input-box input {
+        font-size: 2rem;
+
+        height: 4.5rem;
+    }
+
+    .wrapper .input-box i {
+        font-size: 2rem;
+    }
+
+    .wrapper .forgot a {
+        font-size: 2rem;
+    }
+
+    .wrapper .btn {
+        margin-top: 2rem;
+        font-size: 2rem;
+    }
+
+    .wrapper .register-link {
+        font-size: 2rem;
+    }
+
+    .wrapper .error-holder {
+        height: 3rem;
+    }
+
+    .wrapper .error-holder p {
+        font-size: 1.8rem;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .header-bar a {
+        font-size: 4rem;
+    }
+
+    .form-box {
+        width: 80%;
+    }
+
+    .wrapper {
+        width: 25vw;
+        height: 70vh;
+    }
+
+    .wrapper h1 {
+        font-size: 5rem;
+    }
+
+    .wrapper .input-box input {
+        font-size: 2rem;
+
+        height: 4.5rem;
+    }
+
+    .wrapper .input-box i {
+        font-size: 2rem;
+    }
+
+    .wrapper .forgot a {
+        font-size: 2rem;
+    }
+
+    .wrapper .btn {
+        margin-top: 2rem;
+        font-size: 2rem;
+    }
+
+    .wrapper .register-link {
+        font-size: 2rem;
+    }
+
+    .wrapper .error-holder {
+        height: 3rem;
+    }
+
+    .wrapper .error-holder p {
+        font-size: 1.8rem;
     }
 }
 
