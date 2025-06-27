@@ -117,7 +117,7 @@ export default {
     left: 0;
 
     width: 100%;
-    height: 10vh;
+    height: 7vh;
     
     display: flex;
     justify-content: center;
@@ -130,7 +130,7 @@ export default {
     text-decoration: none;
     color: var(--text-color);
     font-size: 3rem;
-    padding: 0;
+    padding-top: 2rem;
 }
 
 .wrapper {
@@ -146,7 +146,7 @@ export default {
 
     box-sizing: border-box;
 
-    width: 80vw;
+    width: 85vw;
     height: 70vh;
     
     display: flex;
@@ -176,7 +176,7 @@ export default {
 .wrapper .input-box {
     position: relative;
     width: 100%;
-    margin-bottom: 1em;
+    margin-bottom: 0.7rem;
 }
 
 .wrapper .input-box input {
@@ -185,10 +185,10 @@ export default {
 
     box-sizing: border-box;
     width: 100%;
-    height: 3rem;
+    height: 5.5vh;
 
     padding-left: 1em;
-    padding-right: 2.5em;
+    padding-right: 2.5rem;
     
     background-color: var(--box-color);
     
@@ -216,7 +216,7 @@ export default {
     color: var(--input-color);
 
     position: absolute;
-    right: 1em;
+    right: 1rem;
     top: 50%;
     transform: translateY(-50%);
     font-size: 1.2rem;
@@ -232,7 +232,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .wrapper .forgot a {
@@ -246,7 +246,6 @@ export default {
 
 .wrapper .btn {
     font-size: 1.2rem;
-    font-weight: 400;
     font-family: inherit;
     color: var(--text-color);
 
@@ -255,8 +254,9 @@ export default {
     border-radius: 8px;
     border: 1px solid transparent;
 
-    padding: 0.4em 0.8em 0.4em 0.8em;
-    margin-top: 1.2rem;    
+    height: 5.5vh;
+    padding: 0 1.5rem 0 1.5rem;
+    margin-top: 1.5rem;    
     
     cursor: pointer;
 }
@@ -291,6 +291,42 @@ export default {
 
 .wrapper .error-holder p {
     font-size: 1.1rem;
+    margin: 0;
+}
+
+/* REALLY SMALL MOBILES */
+@media only screen and (max-width: 400px) {
+    .header-bar a {
+        font-size: 2.5rem;
+    }
+    
+    .wrapper h1 {
+        font-size: 3.5rem;
+    }
+
+    .wrapper .input-box input,
+    .wrapper .btn {
+        height: 5vh;
+    }
+
+    .wrapper .btn {
+        padding: 0 1rem 0 1rem;
+    }
+
+    .wrapper .input-box {
+        margin-bottom: 0.5rem;
+    }
+
+    .wrapper .input-box i,
+    .wrapper .input-box input,
+    .wrapper .btn,
+    .wrapper .register-link {
+        font-size: 1rem;
+    }
+
+    .wrapper .error-holder p {
+        font-size: 0.9rem;
+    }
 }
 
 /* MOBILE VERSION (LARGER) */
@@ -312,25 +348,27 @@ export default {
         font-size: 4.5rem;
     }
 
-    .wrapper .input-box input {
-        font-size: 1.5rem;
-
-        height: 4rem;
+    .wrapper .input-box input,
+    .wrapper .btn {
+        height: 6vh;
     }
 
     .wrapper .input-box i {
-        font-size: 1.5rem;
-    }
-
-    .wrapper .forgot a {
-        font-size: 1.5rem;
+        right: 1.2rem;
     }
 
     .wrapper .btn {
-        margin-top: 1.5rem;
-        font-size: 1.5rem;
+        padding: 0 1rem 0 1rem;
     }
 
+    .wrapper .input-box {
+        margin-bottom: 1rem;
+    }
+
+    .wrapper .input-box i,
+    .wrapper .input-box input,
+    .wrapper .forgot a,
+    .wrapper .btn,
     .wrapper .register-link {
         font-size: 1.5rem;
     }
@@ -344,7 +382,8 @@ export default {
     }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px){
+/* TABLETS */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
     .header-bar a {
         font-size: 3.7rem;
     }
@@ -362,38 +401,41 @@ export default {
         font-size: 4.7rem;
     }
 
-    .wrapper .input-box input {
-        font-size: 1.7rem;
-
-        height: 4.2rem;
+    .wrapper .input-box input,
+    .wrapper .btn {
+        height: 6.5vh;
     }
 
     .wrapper .input-box i {
-        font-size: 1.7rem;
-    }
-
-    .wrapper .forgot a {
-        font-size: 1.7rem;
+        right: 1.4rem;
     }
 
     .wrapper .btn {
-        margin-top: 1.7rem;
-        font-size: 1.7rem;
+        padding: 0 1rem 0 1rem;
     }
 
+    .wrapper .input-box {
+        margin-bottom: 1.2rem;
+    }
+
+    .wrapper .input-box i,
+    .wrapper .input-box input,
+    .wrapper .forgot a,
+    .wrapper .btn,
     .wrapper .register-link {
-        font-size: 1.7rem;
+        font-size: 2rem;
     }
 
     .wrapper .error-holder {
-        height: 2.7rem;
+        height: 3rem;
     }
 
     .wrapper .error-holder p {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
     }
 }
 
+/* SMALL LAPTOPS / OLDER DISPLAYS */
 @media  only screen and (min-width: 992px) and (max-width: 1199px){
     .header-bar a {
         font-size: 4rem;
@@ -412,41 +454,44 @@ export default {
         font-size: 5rem;
     }
 
-    .wrapper .input-box input {
-        font-size: 2rem;
-
-        height: 4.5rem;
+    .wrapper .input-box input,
+    .wrapper .btn {
+        height: 6.5vh;
     }
 
     .wrapper .input-box i {
-        font-size: 2rem;
-    }
-
-    .wrapper .forgot a {
-        font-size: 2rem;
+        right: 1.6rem;
     }
 
     .wrapper .btn {
-        margin-top: 2rem;
-        font-size: 2rem;
+        padding: 0 1.7rem 0 1.7rem;
     }
 
+    .wrapper .input-box {
+        margin-bottom: 1.2rem;
+    }
+
+    .wrapper .input-box i,
+    .wrapper .input-box input,
+    .wrapper .forgot a,
+    .wrapper .btn,
     .wrapper .register-link {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
 
     .wrapper .error-holder {
-        height: 3rem;
+        height: 5rem;
     }
 
     .wrapper .error-holder p {
-        font-size: 1.8rem;
+        font-size: 2.3rem;
     }
 }
 
+/* FULL DESKTOP - LANDSCAPE */
 @media only screen and (min-width: 1200px) {
     .header-bar a {
-        font-size: 4rem;
+        font-size: 3rem;
     }
 
     .form-box {
@@ -454,43 +499,46 @@ export default {
     }
 
     .wrapper {
-        width: 25vw;
+        width: 30vw;
+        min-width: 400px;
         height: 70vh;
     }
 
     .wrapper h1 {
-        font-size: 5rem;
+        font-size: 4.5rem;
     }
 
-    .wrapper .input-box input {
-        font-size: 2rem;
-
-        height: 4.5rem;
+    .wrapper .input-box input,
+    .wrapper .btn {
+        height: 6vh;
     }
 
     .wrapper .input-box i {
-        font-size: 2rem;
-    }
-
-    .wrapper .forgot a {
-        font-size: 2rem;
+        right: 1.2rem;
     }
 
     .wrapper .btn {
-        margin-top: 2rem;
-        font-size: 2rem;
+        padding: 0 1.5rem 0 1.5rem;
     }
 
+    .wrapper .input-box {
+        margin-bottom: 1rem;
+    }
+
+    .wrapper .input-box i,
+    .wrapper .input-box input,
+    .wrapper .forgot a,
+    .wrapper .btn,
     .wrapper .register-link {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 
     .wrapper .error-holder {
-        height: 3rem;
+        height: 2rem;
     }
 
     .wrapper .error-holder p {
-        font-size: 1.8rem;
+        font-size: 1.3rem;
     }
 }
 

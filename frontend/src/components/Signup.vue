@@ -38,7 +38,7 @@
                     </ul>
                 </div>
 
-                <div class="input-box">
+                <div class="input-box confirm-password-box">
                     <input
                         :type="show.rPassword ? 'text' : 'password'"
                         placeholder="Confirm Password"
@@ -52,7 +52,7 @@
                 </div>
 
                 <div class="error-holder">
-                    <p v-if="error" style="color: var(--invalid-pass); font-size: 0.9em">*{{ error }}</p>
+                    <p v-if="error" style="color: var(--invalid-pass)">*{{ error }}</p>
                 </div>
 
                 <button type="submit" class="btn">Sign Up</button>
@@ -151,11 +151,15 @@ export default {
 }
 
 .auth-container {
-    min-height: 100vh;
+    height: 85vh;
+    padding-top: 10vh;
+    padding-bottom: 5vh;
+
     display: flex;
     justify-content: center;
-    flex-direction: column;
     align-items: center;
+
+    flex-direction: column;
     position: relative;
 }
 
@@ -165,7 +169,7 @@ export default {
     left: 0;
 
     width: 100%;
-    height: 8vh;
+    height: 10vh;
     
     display: flex;
     justify-content: center;
@@ -191,41 +195,34 @@ export default {
     --anchor-color-active: #424fdb;
     --invalid-pass: #a3333d;
     --valid-pass: #45cb85;
-
     background-color: #3a3a3a;
 
-    font-family: "Alumni Sans SC", sans-serif;
-    
     box-sizing: border-box;
 
-    width: 80%;
-    max-width: 600px;
-
-    height: 70%;
-    max-height: 800px;
-
-    margin-top: 6vh;
+    width: 85vw;
+    height: 80vh;
     
-    flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: center;
 
     border-radius: 16px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .form-box {
-    width: 80%;
+    width: 70%;
 }
 
 .wrapper h1 {
-    font-size: 4.5rem;
+    font-size: 4rem;
     font-weight: 400;
     line-height: 1.1;
     color: var(--text-color);
     
     padding: 0;
 
+    margin-top: 1rem;
     margin-bottom: 1rem;
 }
 
@@ -236,12 +233,12 @@ export default {
 }
 
 .wrapper .input-box input {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: var(--input-color);
 
     box-sizing: border-box;
     width: 100%;
-    height: 3.5rem;
+    height: 5.5vh;
 
     padding-left: 1em;
     padding-right: 2.5em;
@@ -251,6 +248,12 @@ export default {
     outline: none;
     border: none;
     border-radius: 6px;
+}
+
+.wrapper .input-box input:focus {
+    box-shadow: inset 1px 1px 6px rgba(0, 0, 0, 0.2),
+                inset -1px -1px 6px rgba(255, 255, 255, 0.02);
+    transition: box-shadow 0.3s ease;
 }
 
 .wrapper .input-box input:focus::placeholder {
@@ -267,10 +270,10 @@ export default {
     color: var(--input-color);
 
     position: absolute;
-    right: 1em;
+    right: 1rem;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     
     cursor: pointer;
 }
@@ -279,9 +282,13 @@ export default {
     color: var(--placeholder-text);
 }
 
+.wrapper .confirm-password-box {
+    margin-bottom: 1.5rem;
+}
+
 .wrapper .btn {
-    font-size: 1.5rem;
-    font-weight: 500;
+    font-size: 1.2rem;
+    font-weight: 400;
     font-family: inherit;
     color: var(--text-color);
 
@@ -290,7 +297,9 @@ export default {
     border-radius: 8px;
     border: 1px solid transparent;
 
-    padding: 0.4em 0.8em 0.4em 0.8em; 
+    height: 5.5vh;
+    padding: 0 1rem 0 1rem;
+    margin-top: 1.5rem;    
     
     cursor: pointer;
 }
@@ -304,8 +313,8 @@ export default {
 }
 
 .wrapper .redirect-link {
-    margin-top: 1em;
-    font-size: 1.5rem;
+    margin-top: 1rem;
+    font-size: 1.2rem;
 }
 
 .wrapper .redirect-link a {
@@ -316,10 +325,16 @@ export default {
     color: var(--anchor-color-active);
 }
 
-.error-holder {
+.wrapper .error-holder {
     padding: 0;
-    min-height: 50px;
-    font-size: 1.5rem;
+    margin: 0;
+
+    height: 2rem;
+}
+
+.wrapper .error-holder p {
+    font-size: 1.1rem;
+    margin: 0;
 }
 
 .password-criteria {
@@ -331,15 +346,19 @@ export default {
     margin: 1rem 0 1rem 0;
     font-size: 1rem;
 }
+
 .password-criteria p,
 .password-criteria ul {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding-left: 2em;
-    font-size: 1.2rem;
-    margin: 0;
+
     color: var(--text-color);
+    font-size: 0.9rem;
+    
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
 }
 
 .valid-password {
@@ -350,39 +369,318 @@ export default {
     color: var(--invalid-pass);
 }
 
-@media (max-width: 600px){
-    .wrapper {
-        max-height: 600px;
+/* REALLY SMALL MOBILES */
+@media only screen and (max-width: 400px) {
+    .auth-container {
+        height: 90vh;
+        padding-top: 10vh;
+        padding-bottom: 0vh;
     }
-    .wrapper h1 {
+    
+    .wrapper {
+        height: 85vh;
+    }
+
+    .header-bar a {
         font-size: 2.5rem;
     }
+
+    .wrapper h1 {
+        font-size: 3.5rem;
+    }
+
+    .wrapper .input-box,
+    .wrapper .btn {
+        height: 5vh;
+    }
+
+    .wrapper .btn {
+        padding: 0 1rem 0 1rem;
+    }
+
+    .wrapper .input-box {
+        margin-bottom: 0.5rem;
+    }
+
     .wrapper .input-box input {
-        font-size: 1rem;
-        height: 2.5em;
+        height: 5vh;
     }
+
+    .wrapper .confirm-password-box {
+        margin-bottom: 1.5rem;
+    }
+
     .wrapper .input-box i,
-    .wrapper .forgot a,
+    .wrapper .input-box input,
     .wrapper .btn,
-    .wrapper .redirect-link,
-    .wrapper .error-holder {
+    .wrapper .redirect-link {
         font-size: 1rem;
     }
-    .header-bar a {
-        font-size: 2rem;
-    }
+
     .password-criteria p,
     .password-criteria ul {
         font-size: 0.8rem;
     }
+
+    .wrapper .error-holder p {
+        font-size: 0.9rem;
+    }
 }
 
-@media (max-height: 700px) {
-    .wrapper {
-        max-height: 590px;
+/* MOBILE VERSION (LARGER) */
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+    .auth-container {
+        height: 90vh;
+        padding-top: 10vh;
+        padding-bottom: 0vh;
     }
-    .error-holder {
-        min-height: 40px;
+    
+    .header-bar a {
+        font-size: 3.5rem;
+    }
+
+    .form-box {
+        width: 80%;
+    }
+
+    .wrapper {
+        width: 80vw;
+        height: 86vh;
+    }
+
+    .wrapper h1 {
+        font-size: 4.5rem;
+    }
+
+    .wrapper .input-box input,
+    .wrapper .btn {
+        height: 6vh;
+    }
+
+    .wrapper .input-box i {
+        right: 1.2rem;
+    }
+
+    .wrapper .btn {
+        padding: 0 1rem 0 1rem;
+    }
+
+    .wrapper .input-box {
+        margin-bottom: 1rem;
+    }
+
+    .wrapper .input-box i,
+    .wrapper .input-box input,
+    .wrapper .forgot a,
+    .wrapper .btn,
+    .wrapper .redirect-link {
+        font-size: 1.5rem;
+    }
+
+    .password-criteria p,
+    .password-criteria ul {
+        font-size: 1.1rem;
+    }
+
+    .wrapper .error-holder {
+        height: 2.5rem;
+    }
+
+    .wrapper .error-holder p {
+        font-size: 1.3rem;
+    }
+}
+
+/* TABLETS */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .auth-container {
+        height: 90vh;
+        padding-top: 10vh;
+        padding-bottom: 0vh;
+    }
+    
+    .header-bar a {
+        font-size: 3.7rem;
+    }
+
+    .form-box {
+        width: 80%;
+    }
+
+    .wrapper {
+        width: 80vw;
+        height: 86vh;
+    }
+
+    .wrapper h1 {
+        font-size: 4.7rem;
+    }
+
+    .wrapper .input-box input,
+    .wrapper .btn {
+        height: 6.5vh;
+    }
+
+    .wrapper .input-box i {
+        right: 1.4rem;
+    }
+
+    .wrapper .btn {
+        padding: 0 1rem 0 1rem;
+    }
+
+    .wrapper .input-box {
+        margin-bottom: 1rem;
+    }
+
+    .wrapper .input-box i,
+    .wrapper .input-box input,
+    .wrapper .forgot a,
+    .wrapper .btn,
+    .wrapper .redirect-link {
+        font-size: 1.5rem;
+    }
+
+    .password-criteria p,
+    .password-criteria ul {
+        font-size: 1.1rem;
+    }
+
+    .wrapper .error-holder {
+        height: 2.5rem;
+    }
+
+    .wrapper .error-holder p {
+        font-size: 1.3rem;
+    }
+}
+
+/* SMALL LAPTOPS / OLDER DISPLAYS */
+@media  only screen and (min-width: 992px) and (max-width: 1199px) {
+    .auth-container {
+        height: 90vh;
+        padding-top: 10vh;
+        padding-bottom: 0vh;
+    }
+    
+    .header-bar a {
+        font-size: 4rem;
+    }
+
+    .form-box {
+        width: 80%;
+    }
+
+    .wrapper {
+        width: 80vw;
+        height: 86vh;
+    }
+
+    .wrapper h1 {
+        font-size: 5rem;
+    }
+
+    .wrapper .input-box input,
+    .wrapper .btn {
+        height: 6.5vh;
+    }
+
+    .wrapper .input-box i {
+        right: 1.6rem;
+    }
+
+    .wrapper .btn {
+        padding: 0 1.7rem 0 1.7rem;
+    }
+
+    .wrapper .input-box {
+        margin-bottom: 1.2rem;
+    }
+
+    .wrapper .input-box i,
+    .wrapper .input-box input,
+    .wrapper .forgot a,
+    .wrapper .btn,
+    .wrapper .redirect-link {
+        font-size: 2.5rem;
+    }
+
+    .password-criteria p,
+    .password-criteria ul {
+        font-size: 2rem;
+    }
+
+    .wrapper .error-holder {
+        height: 4rem;
+    }
+
+    .wrapper .error-holder p {
+        font-size: 2.3rem;
+    }
+}
+
+/* FULL DESKTOP - LANDSCAPE */
+@media only screen and (min-width: 1200px) {
+    .auth-container {
+        height: 90vh;
+        padding-top: 10vh;
+        padding-bottom: 0vh;
+    }
+    
+    .header-bar a {
+        font-size: 3rem;
+    }
+
+    .form-box {
+        width: 80%;
+    }
+
+    .wrapper {
+        width: 30vw;
+        min-width: 400px;
+        height: 86vh;
+    }
+
+    .wrapper h1 {
+        font-size: 4.5rem;
+    }
+
+    .wrapper .input-box input,
+    .wrapper .btn {
+        height: 6vh;
+    }
+
+    .wrapper .input-box i {
+        right: 1.2rem;
+    }
+
+    .wrapper .btn {
+        padding: 0 1.5rem 0 1.5rem;
+    }
+
+    .wrapper .input-box {
+        margin-bottom: 1rem;
+    }
+
+    .wrapper .input-box i,
+    .wrapper .input-box input,
+    .wrapper .forgot a,
+    .wrapper .btn,
+    .wrapper .redirect-link {
+        font-size: 1.5rem;
+    }
+
+    .password-criteria p,
+    .password-criteria ul {
+        font-size: 1rem;
+    }
+
+    .wrapper .error-holder {
+        height: 2rem;
+    }
+
+    .wrapper .error-holder p {
+        font-size: 1.3rem;
     }
 }
 </style>
