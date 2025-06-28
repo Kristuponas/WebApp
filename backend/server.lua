@@ -166,12 +166,27 @@ while true do
 
             if token and sessions[token] then
                 local username = sessions[token]
-                send_json(client, { success = true, message = username })
+                local users = load_users()
+
+                for _, user in ipairs(users) do
+                    if user.username == username then
+                        send_json(client, {
+                            success = true,
+                            username = user.username,
+                            email = user.email,
+                            password = user.password -- you may want to hide this later
+                        })
+                        return
+                    end
+                end
+
+                send_json(client, { success = false, message = "User not found" }, "404 Not Found")
             else
                 send_json(client, { success = false, message = "Unauthorized" }, "401 Unauthorized")
             end
             return
         end
+
 
         -- Default 404
         client:send("HTTP/1.1 404 Not Found\r\n\r\n")
