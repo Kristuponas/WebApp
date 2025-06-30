@@ -50,7 +50,9 @@
                         style="cursor: pointer"
                     ></i>
                 </div>
-                
+                <div class="change-password">
+                    <a href="/changePassword">Change Password</a>
+                </div>
             </div>
         </div>
   </div>
@@ -342,6 +344,10 @@ export default {
     border-radius: 6px;
 }
 
+.user-info > .param-info:nth-child(6) {
+    margin-bottom: 0;
+}
+
 .param-info i {
     color: var(--input-color);
 
@@ -352,5 +358,24 @@ export default {
     font-size: 1.2rem;
     
     cursor: default;
+}
+
+.change-password {
+    margin: 0;
+    padding: 0;
+    width: 80%;
+
+    display: flex;
+    justify-content: flex-start;
+}
+
+.change-password a {
+    font-size: 1.1rem;
+    color: var(--anchor-color);
+    margin-top: 0.3rem;
+}
+
+.change-password a:hover {
+    color: var(--anchor-color-active);
 }
 </style>

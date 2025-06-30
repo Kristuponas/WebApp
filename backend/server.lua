@@ -187,6 +187,55 @@ while true do
             return
         end
 
+        if method == "GET" and path == "/changePassword" then
+            local headers, _ = read_request(client)
+            local token = headers["authorization"]
+
+            if token and sessions[token] then
+                local username = sessions[token]
+                local users = load_users()
+
+                for _, user in ipairs(users) do
+                    if user.username == username then
+                        send_json(client, {
+                            success = true,
+                            password = user.password -- you may want to hide this later
+                        })
+                        return
+                    end
+                end
+
+                send_json(client, { success = false, message = "User not found" }, "404 Not Found")
+            else
+                send_json(client, { success = false, message = "Unauthorized" }, "401 Unauthorized")
+            end
+            return
+        end
+
+        if method == "POST" and path == "/changePassword" then
+            local headers, body = read_request(client)
+            local token = headers["authorization"]
+            print("Token: ", token)
+            local data = json.decode(body)
+
+            if token and sessions[token] then
+                local username = sessions[token]
+                local users = load_users()
+
+                for _, user in ipairs(users) do
+                    if user.username == username then
+                        user.password = data.newPassword
+                        save_users(users)
+                        send_json(client, { success = true, message = "Password updated" })
+                        return
+                    end
+                end
+
+                send_json(client, { success = false, message = "User not found" }, "404 Not Found")
+            else
+                send_json(client, { success = false, message = "Unauthorized" }, "401 Unauthorized")
+            end
+        end
 
         -- Default 404
         client:send("HTTP/1.1 404 Not Found\r\n\r\n")
