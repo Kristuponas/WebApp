@@ -378,6 +378,7 @@ export default {
     }
     
     .wrapper {
+        margin-top: 0;
         height: 85vh;
     }
 
@@ -444,12 +445,13 @@ export default {
     }
 
     .wrapper {
+        margin-top: 0;
         width: 80vw;
         height: 86vh;
     }
 
     .wrapper h1 {
-        font-size: 4.5rem;
+        font-size: 4rem;
     }
 
     .wrapper .input-box input,
@@ -474,7 +476,7 @@ export default {
     .wrapper .forgot a,
     .wrapper .btn,
     .wrapper .redirect-link {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
     .password-criteria p,
@@ -483,11 +485,11 @@ export default {
     }
 
     .wrapper .error-holder {
-        height: 2.5rem;
+        height: 1.7rem;
     }
 
     .wrapper .error-holder p {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
 }
 
@@ -508,17 +510,18 @@ export default {
     }
 
     .wrapper {
+        margin-top: 0;
         width: 80vw;
         height: 86vh;
     }
 
     .wrapper h1 {
-        font-size: 4.7rem;
+        font-size: 4rem;
     }
 
     .wrapper .input-box input,
     .wrapper .btn {
-        height: 6.5vh;
+        height: 6vh;
     }
 
     .wrapper .input-box i {
@@ -538,16 +541,16 @@ export default {
     .wrapper .forgot a,
     .wrapper .btn,
     .wrapper .redirect-link {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 
     .password-criteria p,
     .password-criteria ul {
-        font-size: 1.1rem;
+        font-size: 1.3rem;
     }
 
     .wrapper .error-holder {
-        height: 2.5rem;
+        height: 1.7rem;
     }
 
     .wrapper .error-holder p {
@@ -556,7 +559,7 @@ export default {
 }
 
 /* SMALL LAPTOPS / OLDER DISPLAYS */
-@media  only screen and (min-width: 992px) and (max-width: 1199px) {
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
     .auth-container {
         height: 90vh;
         padding-top: 10vh;
@@ -572,73 +575,9 @@ export default {
     }
 
     .wrapper {
+        margin-top: 0;
         width: 80vw;
-        height: 86vh;
-    }
-
-    .wrapper h1 {
-        font-size: 5rem;
-    }
-
-    .wrapper .input-box input,
-    .wrapper .btn {
-        height: 6.5vh;
-    }
-
-    .wrapper .input-box i {
-        right: 1.6rem;
-    }
-
-    .wrapper .btn {
-        padding: 0 1.7rem 0 1.7rem;
-    }
-
-    .wrapper .input-box {
-        margin-bottom: 1.2rem;
-    }
-
-    .wrapper .input-box i,
-    .wrapper .input-box input,
-    .wrapper .forgot a,
-    .wrapper .btn,
-    .wrapper .redirect-link {
-        font-size: 2.5rem;
-    }
-
-    .password-criteria p,
-    .password-criteria ul {
-        font-size: 2rem;
-    }
-
-    .wrapper .error-holder {
-        height: 4rem;
-    }
-
-    .wrapper .error-holder p {
-        font-size: 2.3rem;
-    }
-}
-
-/* FULL DESKTOP - LANDSCAPE */
-@media only screen and (min-width: 1200px) {
-    .auth-container {
-        height: 90vh;
-        padding-top: 10vh;
-        padding-bottom: 0vh;
-    }
-    
-    .header-bar a {
-        font-size: 3rem;
-    }
-
-    .form-box {
-        width: 80%;
-    }
-
-    .wrapper {
-        width: 30vw;
-        min-width: 400px;
-        height: 86vh;
+        height: 87vh;
     }
 
     .wrapper h1 {
@@ -651,7 +590,7 @@ export default {
     }
 
     .wrapper .input-box i {
-        right: 1.2rem;
+        right: 1.6rem;
     }
 
     .wrapper .btn {
@@ -659,7 +598,7 @@ export default {
     }
 
     .wrapper .input-box {
-        margin-bottom: 1rem;
+        margin-bottom: 1.2rem;
     }
 
     .wrapper .input-box i,
@@ -672,11 +611,11 @@ export default {
 
     .password-criteria p,
     .password-criteria ul {
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
 
     .wrapper .error-holder {
-        height: 2rem;
+        height: 1.7rem;
     }
 
     .wrapper .error-holder p {

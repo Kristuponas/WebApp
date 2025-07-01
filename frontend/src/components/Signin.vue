@@ -370,15 +370,15 @@ export default {
     .wrapper .forgot a,
     .wrapper .btn,
     .wrapper .register-link {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
     .wrapper .error-holder {
-        height: 2.5rem;
+        height: 1.7rem;
     }
 
     .wrapper .error-holder p {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
 }
 
@@ -398,12 +398,12 @@ export default {
     }
 
     .wrapper h1 {
-        font-size: 4.7rem;
+        font-size: 4rem;
     }
 
     .wrapper .input-box input,
     .wrapper .btn {
-        height: 6.5vh;
+        height: 6vh;
     }
 
     .wrapper .input-box i {
@@ -423,15 +423,15 @@ export default {
     .wrapper .forgot a,
     .wrapper .btn,
     .wrapper .register-link {
-        font-size: 2rem;
+        font-size: 1.4rem;
     }
 
     .wrapper .error-holder {
-        height: 3rem;
+        height: 2.5rem;
     }
 
     .wrapper .error-holder p {
-        font-size: 1.8rem;
+        font-size: 1.3rem;
     }
 }
 
@@ -451,12 +451,12 @@ export default {
     }
 
     .wrapper h1 {
-        font-size: 5rem;
+        font-size: 4.5rem;
     }
 
     .wrapper .input-box input,
     .wrapper .btn {
-        height: 6.5vh;
+        height: 6vh;
     }
 
     .wrapper .input-box i {
@@ -464,7 +464,7 @@ export default {
     }
 
     .wrapper .btn {
-        padding: 0 1.7rem 0 1.7rem;
+        padding: 0 1.5rem 0 1.5rem;
     }
 
     .wrapper .input-box {
@@ -476,15 +476,15 @@ export default {
     .wrapper .forgot a,
     .wrapper .btn,
     .wrapper .register-link {
-        font-size: 2.5rem;
+        font-size: 1.5rem;
     }
 
     .wrapper .error-holder {
-        height: 5rem;
+        height: 3.5rem;
     }
 
     .wrapper .error-holder p {
-        font-size: 2.3rem;
+        font-size: 1.5rem;
     }
 }
 

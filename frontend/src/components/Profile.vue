@@ -19,7 +19,7 @@
         </header>
         <div class="wrapper">
             <div class="user-info-title">
-                <h2>User Info</h2>
+                <h1>User Info</h1>
             </div>
             <div class="user-info">
                 <div class="param-title">
@@ -43,7 +43,7 @@
                 </div>
                 <div class="param-info">
                     <p v-if="showPassword">{{ password }}</p>
-                    <p v-else>{{ '*'.repeat(password.length) }}</p>
+                    <p v-else>{{ '●'.repeat(password.length) }}</p>
                     <i 
                         :class="showPassword ? 'bx bxs-show' : 'bx bxs-hide'"
                         @click="togglePassword"
@@ -278,30 +278,34 @@ export default {
 
 .wrapper {
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
 
     width: 80vw;
     height: 80vh;
 
     padding: 0;
-    margin-top: 5vh;
+    margin: 5vh auto;
 }
 
-.user-info-title h2 {
+.wrapper .user-info-title h1 {
+    font-size: 4rem;
+    font-weight: 500;
+    line-height: 1.1;
     color: var(--text-color);
+    
+    padding: 0;
 
-    padding-left: 2rem;
-    font-size: 2rem;
-    margin: 1rem 0 1rem 0;
+    margin: 1rem 0 2rem 0;
 }
 
-.user-info {
+.wrapper .user-info,
+.wrapper .user-info-title {
     color: var(--text-color);
 
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
 
@@ -313,18 +317,24 @@ export default {
     font-size: 1.2rem;
 }
 
-.param-info p {
-    padding-left: 1rem;
-    margin: 0;
-    font-size: 1.2rem;
+
+.param-title p,
+.change-password a {
+    padding-left: 0.2rem;
 }
 
-.param-title {
+.param-info p {
+    margin: 0;
+    font-size: 1.2rem;
+    padding-left: 1.2rem;
+}
+
+.wrapper .param-title {
     width: 80%;
     display: flex;
 }
 
-.param-info {
+.wrapper .param-info {
     position: relative;
     z-index: auto;
     
@@ -335,7 +345,6 @@ export default {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    position: relative;
 
     background-color: var(--box-color);
 
@@ -370,12 +379,157 @@ export default {
 }
 
 .change-password a {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: var(--anchor-color);
     margin-top: 0.3rem;
 }
 
 .change-password a:hover {
     color: var(--anchor-color-active);
+}
+
+/* REALLY SMALL MOBILES */
+@media only screen and (max-width: 400px) {
+    .user-info-title h1 {
+        font-size: 3rem;
+    }
+
+    .param-info {
+        height: 5vh;
+        margin-bottom: 0.5rem;
+    }
+
+    .param-info p {
+        padding-left: 1rem;
+    }
+
+    .param-title p,
+    .param-info p,
+    .param-info i,
+    .change-password a {
+        font-size: 1rem;
+    }
+}
+
+/* MOBILE VERSION (LARGER) */
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+    .user-info-title h1 {
+        font-size: 4rem;
+    }
+
+    .param-info {
+        height: 6vh;
+        margin-bottom: 1rem;
+    }
+
+    .param-info p {
+        padding-left: 1.5rem;
+    }
+
+    .param-title p,
+    .param-info p,
+    .param-info i,
+    .change-password a {
+        font-size: 1.2rem;
+    }
+
+    .param-info i {
+        right: 1.2rem;
+    }
+}
+
+/* TABLETS */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .user-info-title h1 {
+        font-size: 4rem;
+    }
+
+    .param-info {
+        height: 6vh;
+        margin-bottom: 1rem;
+    }
+
+    .param-title p,
+    .param-info p,
+    .param-info i,
+    .change-password a {
+        font-size: 1.4rem;
+    }
+
+    .param-info i {
+        right: 1.4rem;
+    }
+}
+
+/* SMALL LAPTOPS / OLDER DISPLAYS */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .user-info-title h1 {
+        font-size: 4.5rem;
+    }
+
+    .param-info {
+        height: 6vh;
+        margin-bottom: 1rem;
+    }
+
+    .param-info p {
+        padding-left: 2rem;
+    }
+
+    .param-title p,
+    .param-info p,
+    .param-info i,
+    .change-password a {
+        font-size: 1.5rem;
+    }
+
+    .param-info i {
+        right: 1.6rem;
+    }
+}
+
+/* FULL DESKTOP - LANDSCAPE */
+@media only screen and (min-width: 1200px) {    
+    .wrapper {
+        margin-top: 0;
+        width: 30vw;
+        min-width: 400px;
+        height: 86vh;
+    }
+    
+    .wrapper .user-info,
+    .wrapper .user-info-title {
+        width: 100%;
+    }
+    
+    .user-info-title h1 {
+        font-size: 4.5rem;
+    }
+
+    .param-info {
+        height: 6vh;
+        margin-bottom: 1rem;
+    }
+
+    .wrapper .param-title,
+    .wrapper .param-info,
+    .wrapper .change-password {
+        width: 50%;
+    }
+
+    .param-info p {
+        padding-left: 1.5rem;
+    }
+
+    .param-title p,
+    .param-info p,
+    .param-info i,
+    .change-password a {
+        font-size: 1.5rem;
+    }
+
+    .param-info i {
+        right: 1.6rem;
+    }
 }
 </style>
