@@ -1,10 +1,11 @@
-Project started in order to obtain web skills (eg. HTML, CSS, Vue.js, Javascript, Lua).
+Project started in order to obtain web skills (e.g. HTML, CSS, Vue.js, Javascript, Lua).
 Goal is to create a Room Reservation website.
 
 In-progress:
   - Server side (Lua)
-  - Home page
-  - Scale password changing tab for all devices 
+  - Home page:
+      - Filter tab
+      - Grid for properties
 
 To-do:
   - Changing password (if forgot pasword)
@@ -13,6 +14,7 @@ Done:
   - Sign In/Up pages
   - Password validator
   - Profile page
+  - Responsive design for components: (Sign Up/In, Profile, Change Password). Scales with viewport width.
 
 Setting up project:
   - Install Vue
