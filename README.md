@@ -4,7 +4,7 @@ Goal is to create a Room Reservation website.
 In-progress:
   - Server side (Lua)
   - Home page
-  - Profile page
+  - Scale password changing tab for all devices 
 
 To-do:
   - Changing password (if forgot pasword)
@@ -12,6 +12,7 @@ To-do:
 Done:
   - Sign In/Up pages
   - Password validator
+  - Profile page
 
 Setting up project:
   - Install Vue
