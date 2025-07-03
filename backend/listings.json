@@ -1,0 +1,68 @@
+[
+  {
+    "id": "room-001",
+    "title": "Cozy Studio in City Center",
+    "description": "A fully furnished studio perfect for short stays, located in the heart of the city.",
+    "location": {
+      "address": "123 Main St, Vilnius",
+      "city": "Vilnius",
+      "country": "Lithuania"
+    },
+    "price_per_night": 45,
+    "currency": "EUR",
+    "availability": [
+      { "from": "2025-06-23", "to": "2025-07-10" }
+    ],
+    "amenities": ["WiFi", "Kitchen", "Private Bathroom", "Air Conditioning"],
+    "images": [
+      "https://example.com/images/room1.jpg",
+      "https://example.com/images/room1-2.jpg"
+    ],
+    "host": {
+      "name": "Kristupas Čepas",
+      "contact": "kristupas@example.com"
+    },
+    "rating": 4.6,
+    "reviews": [
+      {
+        "user": "Jonas",
+        "comment": "Nice place, clean and central!",
+        "rating": 5,
+        "date": "2025-06-01"
+      }
+    ],
+    "max_guests": 2,
+    "room_type": "Studio",
+    "created_at": "2025-06-20T14:23:00Z",
+    "last_updated": "2025-06-21T11:00:00Z"
+  },
+  {
+    "id": "room-002",
+    "title": "Modern Apartment with Balcony",
+    "description": "Spacious apartment with a beautiful view and modern interior.",
+    "location": {
+      "address": "456 Baltic Ave, Kaunas",
+      "city": "Kaunas",
+      "country": "Lithuania"
+    },
+    "price_per_night": 70,
+    "currency": "EUR",
+    "availability": [
+      { "from": "2025-07-01", "to": "2025-08-15" }
+    ],
+    "amenities": ["WiFi", "Balcony", "TV", "Washer", "Heating"],
+    "images": [
+      "https://example.com/images/room2.jpg"
+    ],
+    "host": {
+      "name": "Greta Petrauskaitė",
+      "contact": "greta@example.com"
+    },
+    "rating": 4.9,
+    "reviews": [],
+    "max_guests": 4,
+    "room_type": "Apartment",
+    "created_at": "2025-06-18T10:00:00Z",
+    "last_updated": "2025-06-21T12:00:00Z"
+  }
+]

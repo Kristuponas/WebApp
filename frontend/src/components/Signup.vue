@@ -622,4 +622,70 @@ export default {
         font-size: 1.3rem;
     }
 }
+
+/* FULL DESKTOP - LANDSCAPE */
+@media only screen and (min-width: 1200px) {
+    .auth-container {
+        height: 90vh;
+        padding-top: 10vh;
+        padding-bottom: 0vh;
+    }
+
+    .header-bar a {
+        font-size: 3rem;
+    }
+
+    .form-box {
+        width: 80%;
+    }
+
+    .wrapper {
+        margin-top: 0;
+        width: 30vw;
+        min-width: 485px;
+        height: 87vh;
+    }
+
+    .wrapper h1 {
+        font-size: 4.5rem;
+    }
+
+    .wrapper .input-box input,
+    .wrapper .btn {
+        height: 6vh;
+    }
+
+    .wrapper .input-box i {
+        right: 1.2rem;
+    }
+
+    .wrapper .btn {
+        padding: 0 1.5rem 0 1.5rem;
+    }
+
+    .wrapper .input-box {
+        margin-bottom: 1rem;
+    }
+
+    .wrapper .input-box i,
+    .wrapper .input-box input,
+    .wrapper .forgot a,
+    .wrapper .btn,
+    .wrapper .register-link {
+        font-size: 1.5rem;
+    }
+
+    .password-criteria p,
+    .password-criteria ul {
+        font-size: 1.4rem;
+    }
+
+    .wrapper .error-holder {
+        height: 2rem;
+    }
+
+    .wrapper .error-holder p {
+        font-size: 1.3rem;
+    }
+}
 </style>

@@ -119,7 +119,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .auth-container {
     --text-color: #D8D9DA;
     --placeholder-text: #646565;
@@ -492,8 +492,8 @@ export default {
 @media only screen and (min-width: 1200px) {    
     .wrapper {
         margin-top: 0;
-        width: 30vw;
-        min-width: 400px;
+        width: 45vw;
+        min-width: 450px;
         height: 86vh;
     }
     

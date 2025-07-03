@@ -208,7 +208,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .auth-container {
     --text-color: #D8D9DA;
     --placeholder-text: #646565;
@@ -234,16 +234,20 @@ export default {
 }
 
 .header-bar {
-    background-color: #2E2E2E;
     position: fixed;
+    top: 0;
+    left: 0;
+
     display: block;
     box-sizing: border-box;
     z-index: 1000;
+    
     width: 100vw;
     height: 10vh;
-    top: 0;
-    left: 0;
+
     margin: 0;
+
+    background-color: #2E2E2E;
 }
 
 .nav-bar {
@@ -335,8 +339,8 @@ export default {
 
 .wrapper {
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
 
     width: 80vw;
@@ -344,6 +348,18 @@ export default {
 
     padding: 0;
     margin-top: 5vh;
+}
+
+.wrapper h1 {
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--text-color);
+    
+    padding: 0;
+
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .change-info {
@@ -425,7 +441,7 @@ export default {
     align-items: flex-start;
 
     color: var(--text-color);
-    font-size: 1.1rem;
+    font-size: 1rem;
     
     margin: 0;
     padding-left: 0;
@@ -478,4 +494,214 @@ export default {
     margin: 0;
 }
 
+/* REALLY SMALL MOBILES */
+@media only screen and (max-width: 400px) {
+    .wrapper h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* MOBILE VERSION (LARGER) */
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+    .wrapper {
+        margin-top: 0;
+        width: 80vw;
+        height: 86vh;
+    }
+
+    .wrapper h1 {
+        font-size: 4rem;
+    }
+
+    .wrapper .input-box input,
+    .wrapper button {
+        height: 6vh;
+    }
+
+    .wrapper .input-box i {
+        right: 1.2rem;
+    }
+
+    .wrapper button {
+        padding: 0 1rem 0 1rem;
+    }
+
+    .wrapper .input-box {
+        margin-bottom: 1rem;
+    }
+
+    .wrapper .input-box i,
+    .wrapper .input-box input,
+    .wrapper .forgot a,
+    .wrapper button,
+    .wrapper .redirect-link {
+        font-size: 1.2rem;
+    }
+
+    .password-criteria p,
+    .password-criteria ul {
+        font-size: 1.1rem;
+    }
+
+    .wrapper .error-holder {
+        height: 1.7rem;
+    }
+
+    .wrapper .error-holder p {
+        font-size: 1.1rem;
+    }
+}
+
+/* TABLETS */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .wrapper {
+        margin-top: 0;
+        width: 80vw;
+        height: 86vh;
+    }
+
+    .wrapper h1 {
+        font-size: 4rem;
+    }
+
+    .wrapper .input-box input,
+    .wrapper .btn {
+        height: 6vh;
+    }
+
+    .wrapper .input-box i {
+        right: 1.4rem;
+    }
+
+    .wrapper button {
+        padding: 0 1rem 0 1rem;
+    }
+
+    .wrapper .input-box {
+        margin-bottom: 1rem;
+    }
+
+    .wrapper .input-box i,
+    .wrapper .input-box input,
+    .wrapper .forgot a,
+    .wrapper button,
+    .wrapper .redirect-link {
+        font-size: 1.4rem;
+    }
+
+    .password-criteria p,
+    .password-criteria ul {
+        font-size: 1.3rem;
+    }
+
+    .wrapper .error-holder {
+        height: 1.7rem;
+    }
+
+    .wrapper .error-holder p {
+        font-size: 1.3rem;
+    }
+}
+
+/* SMALL LAPTOPS / OLDER DISPLAYS */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .wrapper {
+        margin-top: 0;
+        width: 80vw;
+        height: 87vh;
+    }
+
+    .wrapper h1 {
+        font-size: 4.5rem;
+    }
+
+    .wrapper .input-box input,
+    .wrapper button {
+        height: 6vh;
+    }
+
+    .wrapper .input-box i {
+        right: 1.6rem;
+    }
+
+    .wrapper button {
+        padding: 0 1.5rem 0 1.5rem;
+    }
+
+    .wrapper .input-box {
+        margin-bottom: 1.2rem;
+    }
+
+    .wrapper .input-box i,
+    .wrapper .input-box input,
+    .wrapper .forgot a,
+    .wrapper button,
+    .wrapper .redirect-link {
+        font-size: 1.5rem;
+    }
+
+    .password-criteria p,
+    .password-criteria ul {
+        font-size: 1.2rem;
+    }
+
+    .wrapper .error-holder {
+        height: 1.7rem;
+    }
+
+    .wrapper .error-holder p {
+        font-size: 1.3rem;
+    }
+}
+
+/* FULL DESKTOP - LANDSCAPE */
+@media only screen and (min-width: 1200px) {
+    .wrapper {
+        width: 30vw;
+        min-width: 400px;
+        height: 70vh;
+    }
+
+    .wrapper h1 {
+        font-size: 4.5rem;
+    }
+
+    .wrapper .input-box input,
+    .wrapper button {
+        height: 6vh;
+    }
+
+    .wrapper .input-box i {
+        right: 1.2rem;
+    }
+
+    .wrapper button {
+        padding: 0 1.5rem 0 1.5rem;
+    }
+
+    .wrapper .input-box {
+        margin-bottom: 1rem;
+    }
+
+    .wrapper .input-box i,
+    .wrapper .input-box input,
+    .wrapper .forgot a,
+    .wrapper button,
+    .wrapper .register-link {
+        font-size: 1.5rem;
+    }
+
+    .password-criteria p,
+    .password-criteria ul {
+        font-size: 1.4rem;
+    }
+
+    .wrapper .error-holder {
+        height: 2rem;
+    }
+
+    .wrapper .error-holder p {
+        font-size: 1.3rem;
+    }
+}
 </style>
